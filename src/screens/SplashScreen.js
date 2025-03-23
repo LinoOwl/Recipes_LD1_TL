@@ -1,23 +1,18 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Image } from 'react-native';
 
 const SplashScreen = ({ navigation }) => {
-  useEffect(() => {
+  useEffect(() => { 
     setTimeout(() => {
       navigation.replace('Main');
     }, 2000);
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to RecipesApp</Text>
+    <View>
+      <Image source={require('../splashscreenimg/splash.png')} style={{ width: '100%', height: '100%' }} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFA500' },
-  title: { fontSize: 24, fontWeight: 'bold', color: '#fff' },
-});
 
 export default SplashScreen;

@@ -27,7 +27,7 @@ const TabNavigator = () => {
     <Tab.Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ color, size }) => {
         let iconName;
-        if (route.name === 'Meals') iconName = 'home';
+        if (route.name === 'Meals') iconName = 'restaurant';
         else if (route.name === 'Categories') iconName = 'list';
         else if (route.name === 'Home') iconName = 'add-circle';
         else if (route.name === 'Search') iconName = 'search';
