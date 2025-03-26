@@ -6,8 +6,9 @@ const SearchScreen = ({ navigation }) => {
   const [meals, setMeals] = useState([]);
 
   const searchMeals = async (text) => {
+    
     setQuery(text);
-    if (text.length > 1) {
+    if (text.trim()) {
       try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`);
         const data = await response.json();
@@ -23,6 +24,7 @@ const SearchScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Search Meals</Text>
+      
 
       <TextInput
         style={styles.input}
@@ -30,6 +32,7 @@ const SearchScreen = ({ navigation }) => {
         value={query}
         onChangeText={searchMeals}
       />
+      <Text style={styles.subtittle}>write more than 1 letter</Text>
 
       <FlatList
         data={meals}
@@ -52,6 +55,7 @@ const SearchScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#fff' },
   title: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 10 },
+  subtittle: { fontSize: 14, textAlign: 'justified', color: 'red' },
   input: { 
     height: 40, 
     borderColor: '#ccc', 

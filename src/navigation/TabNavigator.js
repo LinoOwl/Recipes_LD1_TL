@@ -24,26 +24,31 @@ const CustomTabBarButton = ({ onPress }) => {
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={({ route }) => ({
-      tabBarIcon: ({ color, size }) => {
-        let iconName;
-        if (route.name === 'Home') iconName = 'add-circle';
-        else if (route.name === 'Categories') iconName = 'list';
-        else if (route.name === 'Meals') iconName = 'restaurant';
-        else if (route.name === 'Search') iconName = 'search';
-        else if (route.name === 'Terms') iconName = 'document-text';
-        return <Ionicons name={iconName} size={size} color={color} />;
-      },
-    })}>
-      <Tab.Screen name="Meals" component={MealsScreen} />
-      <Tab.Screen name="Categories" component={CategoriesScreen} />
-      <Tab.Screen name="Home" component={HomeScreen} options={{
-          tabBarButton: (props) => <CustomTabBarButton {...props} />,
-        }}
-      />
-      <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Terms" component={TermsScreen} />
-    </Tab.Navigator>
+    <Tab.Navigator 
+  initialRouteName="Home"  
+  screenOptions={({ route }) => ({
+    tabBarIcon: ({ color, size }) => {
+      let iconName;
+      if (route.name === 'Home') iconName = 'add-circle';
+      else if (route.name === 'Categories') iconName = 'list';
+      else if (route.name === 'Meals') iconName = 'restaurant';
+      else if (route.name === 'Search') iconName = 'search';
+      else if (route.name === 'Terms') iconName = 'document-text';
+      return <Ionicons name={iconName} size={size} color={color} />;
+    },
+  })}
+>
+  <Tab.Screen name="Meals" component={MealsScreen} />
+  <Tab.Screen name="Categories" component={CategoriesScreen} />
+  <Tab.Screen name="Home" component={HomeScreen} 
+    options={{
+      tabBarButton: (props) => <CustomTabBarButton {...props} />,
+    }}
+  />
+  <Tab.Screen name="Search" component={SearchScreen} />
+  <Tab.Screen name="Terms" component={TermsScreen} />
+</Tab.Navigator>
+
   );
 };
 

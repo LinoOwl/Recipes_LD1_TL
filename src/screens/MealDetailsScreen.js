@@ -65,7 +65,7 @@ const MealDetailsScreen = ({ route }) => {
 
 // Styles
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#fff' },
+  container: { flex: 1, padding: 20, backgroundColor: '#fff', marginTop: 40 },
   image: { width: '100%', height: 250, borderRadius: 10, marginBottom: 10 },
   title: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 10 },
   category: { fontSize: 16, fontWeight: 'bold', textAlign: 'center', marginBottom: 5, color: '#888' },

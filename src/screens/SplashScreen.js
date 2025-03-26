@@ -10,7 +10,7 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View>
-      <Image source={require('../splashscreenimg/splash.png')} style={{ width: '100%', height: '100%' }} />
+      <Image source={require('../splash_screen_img/splash.png')} style={{ width: '100%', height: '100%' }} />
     </View>
   );
 };
