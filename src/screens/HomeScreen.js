@@ -5,7 +5,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Instructions</Text>
-      {/* Add Categories UI here */}
+      {/* Add instructions UI here */}
     </View>
   );
 };
