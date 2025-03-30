@@ -4,10 +4,11 @@ import { ScrollView, StyleSheet, Text, View  } from 'react-native';
 
 const TermsScreen = () => {
   return (
+    
     <ScrollView style={styles.container}>
-        <Text style={styles.sectionTitle}>Terms & Conditions</Text>
-        <View>
-
+      <View>
+        <Text style={styles.title}>Terms & Conditions</Text>
+      
         <Text style={styles.sectionTitle}>1. Acceptance of Terms</Text>
         <Text style={styles.content}>
           By downloading and using RecipeMaster, you agree to comply with these Terms of Service. 
@@ -52,31 +53,48 @@ const TermsScreen = () => {
         <Text style={styles.footerText}>
           THIS IS NOT A REAL TERMS AND SERVICE, JUST A PROJECT FOR COLLEGE.
         </Text>
-
-        
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
     padding: 10,
   },
+
+  title:{
+    fontSize: 28,
+    fontWeight: 'bold',
+    fontFamily: 'serif',
+    textAlign: 'center',
+    marginBottom: 10,
+    color: '#FF5733',
+  },
+
   sectionTitle: {
+    marginTop: 20,
+    fontSize: 22,
     fontSize: 18,
+    fontFamily: 'serif',
     fontWeight: 'bold',
     marginTop: 10,
     color: '#333',
   },
+
   content: {
     fontSize: 16,
+    fontFamily: 'serif',
     color: '#555',
     marginTop: 5,
+    textAlign: 'justify'
   },
+
   footerText: {
     fontSize: 14,
+    fontFamily: 'serif',
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'red',
@@ -86,6 +104,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomWidth: 1,
   },
+
 });
 
 export default TermsScreen;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, NavigationIndependentTree } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from './screens/SplashScreen';
 import TabNavigator from './navigation/TabNavigator';
 
-import SearchScreen from './screens/SearchScreen';
+import SearchScreen from './screens/TabScreens/SearchScreen';
 import MealDetailsScreen from './screens/MealDetailsScreen';
-import MealsScreen from './screens/MealsScreen';
+import MealsScreen from './screens/TabScreens/MealsScreen';
 
 const Stack = createStackNavigator();
 

@@ -2,11 +2,11 @@ import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import MealsScreen from '../screens/MealsScreen';
-import CategoriesScreen from '../screens/CategoriesScreen';
-import HomeScreen from '../screens/HomeScreen';
-import TermsScreen from '../screens/TermsScreen';
-import SearchScreen from '../screens/SearchScreen';
+import MealsScreen from '../screens/TabScreens/MealsScreen';
+import CategoriesScreen from '../screens/TabScreens/CategoriesScreen';
+import HomeScreen from '../screens/TabScreens/HomeScreen';
+import TermsScreen from '../screens/TabScreens/TermsScreen';
+import SearchScreen from '../screens/TabScreens/SearchScreen';
 
 import { Ionicons } from 'react-native-vector-icons';
 
