@@ -62,18 +62,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#1c1c1c' 
   },
   title: { 
-    fontSize: 24, 
+    fontSize: 32, 
     fontWeight: 'bold', 
     textAlign: 'center', 
     marginBottom: 10, 
     marginTop: 40,
     color: 'orange',
+    fontFamily: 'serif',
   },
   subtittle: { 
     fontSize: 17, 
     textAlign: 'justified', 
     color: 'red', 
     marginBottom: 10,
+    fontFamily: 'serif',
   },
   input: { 
     height: 40, 
@@ -82,7 +84,8 @@ const styles = StyleSheet.create({
     borderWidth: 1, 
     borderRadius: 8, 
     paddingHorizontal: 10, 
-    marginBottom: 10 
+    marginBottom: 10,
+    fontFamily: 'serif',
   },
   card: {
     flexDirection: 'row',
@@ -105,6 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 16, 
     fontWeight: '500',
     color: 'orange',
+    fontFamily: 'serif',
   },
 });
 
