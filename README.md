@@ -5,8 +5,8 @@ Welcome to the Recipes App! This application is built using **React Native** and
 ## Documentation Links
 
 - [React Native Documentation](https://reactnative.dev/docs/getting-started)
-- [Expo Documentation](https://docs.expo.dev/get-started/installation/)
-- [React Native YouTube Iframe Documentation](https://github.com/inProgress-team/react-native-youtube-iframe)
+- [Expo Documentation](https://docs.expo.dev/get-started/introduction/)
+- [React Native YouTube Iframe Documentation](https://lonelycpp.github.io/react-native-youtube-iframe/)
 
 ## Prerequisites
 
