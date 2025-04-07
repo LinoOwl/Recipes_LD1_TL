@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
-import background from '../images/background.jpg';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 
 const MealsScreen = ({ navigation }) => {
-  const [meals, setMeals] = useState([]);
+  const [meals, setMeals] = useState([]); // Inicializa o estado das receitas
 
   const fetchMeals = async () => {
     try {
@@ -13,36 +12,31 @@ const MealsScreen = ({ navigation }) => {
     } catch (error) {
       console.error('Error fetching meals:', error);
     }
-  };
+  }; // Fetch das receitas através da API
 
-  useEffect(() => {
-    fetchMeals();
-  }, []);
+  useEffect(() => { fetchMeals(); }, []); 
   
   return (
     
     <View style={styles.container}>
-      
-      <Text style={styles.title}>Delicious Recipes for you</Text>
-     
-        <FlatList
-          data={meals}
-          keyExtractor={(item) => item.idMeal}
+
+      <Text style={styles.title}>Delicious Recipes</Text>
+     {/* FlatList para renderizar as receitas, com o idMeal como keyExtractor 
+     e o onPress para navegar para a tela de detalhes da receita */}
+        <FlatList data={meals} keyExtractor={(item) => item.idMeal}
           renderItem={({ item }) => (
-            <TouchableOpacity 
-                      style={styles.card} 
-                      onPress={() => navigation.navigate('MealDetails', { mealId: item.idMeal })}
-                    >
-            <View style={styles.mealCard}>
+            <TouchableOpacity style={styles.card} 
+            onPress={() => navigation.navigate('MealDetails', { mealId: item.idMeal })}>
+        
+        <View style={styles.cardContent}>
               <Image source={{ uri: item.strMealThumb }} style={styles.mealImage} />
               <Text style={styles.mealTitle}>{item.strMeal}</Text>
-            </View>
+</View>
             </TouchableOpacity>
           )}
         />
      
-      <View style={styles.footer}>
-</View>
+      <View style={styles.footer}></View>
 
     </View>
    
@@ -55,36 +49,54 @@ const styles = StyleSheet.create({
     flex: 1, 
     height: '100%',
     width: '100%', 
-    backgroundColor: 'black',
+    backgroundColor: '#131312',
   },
   title: { 
-    paddingTop: 20,
+    paddingTop: 50,
     fontSize: 32, 
     fontWeight: 'bold', 
     textAlign: 'center', 
-    marginBottom: 10, 
-    color: 'white',
+    marginBottom: 30, 
+    marginTop: 10,
+    color: 'orange',
     fontFamily: 'serif',
   },
-  mealCard: { 
-    alignItems: 'center', 
-    marginBottom: 15 
-  },
   mealImage: { 
-    width: 150, 
-    height: 150, 
+    justifyContent: 'left',
+    width: 130, 
+    height: 130, 
     borderRadius: 10 
   },
   mealTitle: { 
-    fontSize: 18, 
+    justifyContent: 'right',
+    fontSize: 28, 
     fontWeight: 'bold', 
-    marginTop: 5,
-    color: 'white'
+    marginTop: 20,
+    color: 'orange'
+  },
+  cardContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
+  mealTitle: { 
+    fontSize: 30, 
+    fontWeight: 'bold', 
+    marginLeft: 20,
+    color: 'orange',
+    flexShrink: 1, 
+    fontFamily: 'serif',
+  },
+  card: {
+    marginBottom: 20,
+    backgroundColor: '#1c1c1c',
+    borderRadius: 10,
+    marginHorizontal: 10,
   },
   footer: { 
     padding: 10, 
     alignItems: 'center', 
-    marginTop: 10 
+    marginTop: 20 
   },
 });
 

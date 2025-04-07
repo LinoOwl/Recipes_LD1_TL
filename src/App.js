@@ -24,6 +24,8 @@ const App = () => {
         <Stack.Screen name="Meals" component={MealsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+
+    
   );
 };
 

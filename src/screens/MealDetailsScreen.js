@@ -1,8 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView, StyleSheet, ActivityIndicator, Linking, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState, useCallback, useRef } from "react";
+import { View, Text, Image, ScrollView, StyleSheet, ActivityIndicator, Linking, TouchableOpacity, Alert } from 'react-native';
+// Importa o YoutubePlayer para exibir vídeos do YouTube 
+// ' https://lonelycpp.github.io/react-native-youtube-iframe/ '
+// "A wrapper of the Youtube-iframe API built for react native."
+import YoutubePlayer from "react-native-youtube-iframe"; 
+
 
 
 const MealDetailsScreen = ({ route }) => {
+
+
+ // Função chamada quando o estado do vídeo muda
+  const onStateChange = useCallback((state) => { 
+    if (state === "ended") {
+      setPlaying(false);
+      Alert.alert("video has finished playing!");
+    }
+  }, []);
+
   const { mealId } = route.params; // Recebe o ID da refeição como parâmetro da rota
   const [meal, setMeal] = useState(null); // Estado para armazenar os detalhes da refeição
   const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
@@ -33,11 +48,16 @@ const MealDetailsScreen = ({ route }) => {
     <View style={styles.container}>
     <ScrollView  horizontal={false} bounces={false} showsVerticalScrollIndicator={false}>
 
-      <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
-
       <Text style={styles.title}>{meal.strMeal}</Text>
       <Text style={styles.category}>Category: {meal.strCategory}</Text>
       <Text style={styles.area}>Origin: {meal.strArea}</Text>
+
+        {/* YouTube Video */}
+<View style={{marginBottom: -50, paddingBottom: 0, overflow: 'hidden'}}>
+        <YoutubePlayer height={270} padding={20} 
+        videoId={meal.strYoutube ? meal.strYoutube.split('v=')[1] : null} 
+        onChangeState={onStateChange}/>
+</View>
 
       {/* Ingredients List */}
       <Text style={styles.sectionTitle}>Ingredients:</Text>
@@ -51,7 +71,7 @@ const MealDetailsScreen = ({ route }) => {
       
       <View style={styles.flowerBox}>
       {/* Instructions */}
-      <Text style={styles.sectionTitle}>Instructions:</Text>
+      <Text style={styles.sectionTitle2}>Instructions</Text>
       {/* Divida as instruções por '.' e mapeie-as para exibir cada etapa */}
       {meal.strInstructions ?.split('.').map(step => step.trim()).filter(Boolean).map((step, index) => (
         // Exibir cada etapa como um componente de texto separado
@@ -59,17 +79,6 @@ const MealDetailsScreen = ({ route }) => {
   ))
 }
       </View>
-
-      {/* YouTube Video */}
-      {meal.strYoutube && (
-        <TouchableOpacity 
-          style={styles.youtubeButton} 
-          onPress={() => Linking.openURL(meal.strYoutube)}
-        >
-          <Text style={styles.youtubeText}>Watch on YouTube</Text>
-        </TouchableOpacity>
-      )}
-       
     </ScrollView>
     </View>
   );
@@ -80,21 +89,15 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     padding: 20, 
-    backgroundColor: 'gray', 
-    marginTop: 40 
-  },
-  image: { 
-    width: '100%', 
-    height: 250, 
-    borderRadius: 10, 
-    marginTop: 10,
-    marginBottom: 10 
+    backgroundColor: '#131312', 
+    justifyContent: 'center',
   },
   title: { 
     fontFamily: 'serif',
     fontSize: 34, 
     fontWeight: 'bold', 
     textAlign: 'center', 
+    marginTop: 30,
     marginBottom: 10,
     color: 'orange'
   },
@@ -109,7 +112,7 @@ const styles = StyleSheet.create({
   area: { 
     fontSize: 20, 
     textAlign: 'center', 
-    marginBottom: 10, 
+    marginBottom: 30, 
     color: 'white',
     fontFamily: 'serif' 
   },
@@ -120,6 +123,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     color: 'orange',
     fontFamily: 'serif'
+  },
+  sectionTitle2: { 
+    fontSize: 30, 
+    fontWeight: 'bold', 
+    marginTop: 15, 
+    marginBottom: 5,
+    color: 'orange',
+    fontFamily: 'serif',
+    textAlign: 'center',
   },
   ingredient: { 
     fontSize: 17, 
@@ -134,19 +146,6 @@ const styles = StyleSheet.create({
     marginTop: 5, 
     color: 'white',
     fontFamily: 'serif'
-  },
-  youtubeButton: { 
-    backgroundColor: '#FF0000', 
-    padding: 10, 
-    marginTop: 15, 
-    marginBottom: 20,
-    borderRadius: 8, 
-    alignItems: 'center' 
-  },
-  youtubeText: { 
-    color: '#fff', 
-    fontSize: 16, 
-    fontWeight: 'bold' 
   },
   flowerBox: {       
     borderRadius: 40,                 
