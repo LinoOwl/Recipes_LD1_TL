@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-
+import { View, Text, FlatList, Image, StyleSheet, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import background from '../images/background.jpg';
 
 const MealsScreen = ({ navigation }) => {
   const [meals, setMeals] = useState([]);
@@ -20,9 +20,11 @@ const MealsScreen = ({ navigation }) => {
   }, []);
   
   return (
+    
     <View style={styles.container}>
-      <Text style={styles.title}>Delicious Meals for you</Text>
       
+      <Text style={styles.title}>Delicious Recipes for you</Text>
+     
         <FlatList
           data={meals}
           keyExtractor={(item) => item.idMeal}
@@ -38,11 +40,12 @@ const MealsScreen = ({ navigation }) => {
             </TouchableOpacity>
           )}
         />
-      
+     
       <View style={styles.footer}>
-        
-      </View>
+</View>
+
     </View>
+   
   );
 };
 
@@ -50,14 +53,18 @@ const MealsScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    padding: 10, 
-    backgroundColor: '#fff' 
+    height: '100%',
+    width: '100%', 
+    backgroundColor: 'black',
   },
   title: { 
-    fontSize: 22, 
+    paddingTop: 20,
+    fontSize: 32, 
     fontWeight: 'bold', 
     textAlign: 'center', 
-    marginBottom: 10 
+    marginBottom: 10, 
+    color: 'white',
+    fontFamily: 'serif',
   },
   mealCard: { 
     alignItems: 'center', 
@@ -71,7 +78,8 @@ const styles = StyleSheet.create({
   mealTitle: { 
     fontSize: 18, 
     fontWeight: 'bold', 
-    marginTop: 5 
+    marginTop: 5,
+    color: 'white'
   },
   footer: { 
     padding: 10, 

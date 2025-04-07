@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Image } from 'react-native';
+import splashimage from './images/splash.png';
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => { 
@@ -10,7 +11,7 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View>
-      <Image source={require('../splash_screen_img/splash.png')} style={{ width: '100%', height: '100%' }} />
+      <Image source={splashimage} style={{ width: '100%', height: '100%' }} />
     </View>
   );
 };
