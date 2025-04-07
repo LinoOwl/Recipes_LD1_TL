@@ -32,6 +32,6 @@ To get started with the Recipes App, follow these steps:
 
 > npm start
 
-8. With your mobile phone, scan the QR code displayed in the terminal or browser to open the project on your phone.
+8. With your mobile phone, scan the QR code displayed in the terminal to open the project on your phone.
 
 
