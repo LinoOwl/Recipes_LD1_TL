@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
   },
   mealImage: { 
     justifyContent: 'left',
-    width: 130, 
-    height: 130, 
+    width: 120, 
+    height: 120, 
     borderRadius: 10 
   },
   mealTitle: { 
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   mealTitle: { 
-    fontSize: 30, 
-    fontWeight: 'bold', 
-    marginLeft: 20,
+    textAlign: 'center',
+    fontSize: 30,
+    marginLeft: 40,
     color: 'orange',
     flexShrink: 1, 
     fontFamily: 'serif',
