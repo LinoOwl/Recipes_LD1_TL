@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 const SearchScreen = ({ navigation }) => {
-  const [query, setQuery] = useState('');
-  const [meals, setMeals] = useState([]);
 
-  const searchMeals = async (text) => {
+  const [query, setQuery] = useState('');// Estado para armazenar a consulta de pesquisa
+  const [meals, setMeals] = useState([]);// Estado para armazenar os resultados da pesquisa
+
+  // Função para pesquisar refeições
+  const searchMeals = async (text) => { 
+    setQuery(text); 
     
-    setQuery(text);
-    if (text.trim()) {
+    
+    if (text.trim().length >= 2) { // Verifica se o input tem pelo menos 2 caracteres
       try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`);
         const data = await response.json();
@@ -23,27 +26,27 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+
       <Text style={styles.title}>Search Meals</Text>
       
 
-      <TextInput
-        style={styles.input}
-        placeholder="Search for a meal..."
-        value={query}
-        onChangeText={searchMeals}
-      />
+      <TextInput style={styles.input} placeholder="Search for a meal..." placeholderTextColor="orange"
+        value={query} onChangeText={searchMeals}/>
+
       <Text style={styles.subtittle}>write more than 1 letter</Text>
 
-      <FlatList
-        data={meals}
-        keyExtractor={(item) => item.idMeal}
+{/* FlatList para renderizar as refeições, com o idMeal como keyExtractor
+e o onPress para navegar para a tela de detalhes da refeição */}
+      <FlatList data={meals} keyExtractor={(item) => item.idMeal}
+
         renderItem={({ item }) => (
-          <TouchableOpacity 
-            style={styles.card} 
+          
+          <TouchableOpacity style={styles.card} 
             onPress={() => navigation.navigate('MealDetails', { mealId: item.idMeal })}
           >
             <Image source={{ uri: item.strMealThumb }} style={styles.image} />
             <Text style={styles.mealName}>{item.strMeal}</Text>
+
           </TouchableOpacity>
         )}
       />
@@ -53,12 +56,29 @@ const SearchScreen = ({ navigation }) => {
 
 // Styles
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#fff' },
-  title: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 10 },
-  subtittle: { fontSize: 14, textAlign: 'justified', color: 'red' },
+  container: { 
+    flex: 1, 
+    padding: 20, 
+    backgroundColor: '#1c1c1c' 
+  },
+  title: { 
+    fontSize: 24, 
+    fontWeight: 'bold', 
+    textAlign: 'center', 
+    marginBottom: 10, 
+    marginTop: 40,
+    color: 'orange',
+  },
+  subtittle: { 
+    fontSize: 17, 
+    textAlign: 'justified', 
+    color: 'red', 
+    marginBottom: 10,
+  },
   input: { 
     height: 40, 
-    borderColor: '#ccc', 
+    borderColor: 'orange', 
+    color: 'orange',
     borderWidth: 1, 
     borderRadius: 8, 
     paddingHorizontal: 10, 
@@ -67,12 +87,25 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    padding: 5,
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    borderBottomColor: 'orange',
+    backgroundColor: '#282823',
+    marginBottom: 10,
+    marginTop: 10,
+    borderRadius: 10,
   },
-  image: { width: 50, height: 50, borderRadius: 25, marginRight: 10 },
-  mealName: { fontSize: 16, fontWeight: '500' },
+  image: { 
+    width: 55, 
+    height: 55, 
+    borderRadius: 25, 
+    marginRight: 10 
+  },
+  mealName: { 
+    fontSize: 16, 
+    fontWeight: '500',
+    color: 'orange',
+  },
 });
 
 export default SearchScreen;
