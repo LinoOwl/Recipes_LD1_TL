@@ -16,6 +16,22 @@ Before you start, make sure you have [Node.js](https://nodejs.org/) installed on
 
 To get started with the Recipes App, follow these steps:
 
-1. **Download the repository** or **clone it** using the following command:
-   ```bash
-   git clone https://github.com/username/recipes-app.git
+1. To start please **Download the repository** or **clone it**
+
+3. Open your **command line interface** (like Windows Command Prompt).
+
+5. Then navigate in the command line to the folder where the project is, in the windows command prompt(CMD) u can write:
+
+> cd path/to/your/project/folder
+
+6. Please install all packages from the project before running the project, in CMD:
+
+> npm install
+
+7. run the project on expo, in CMD:
+
+> npm start
+
+8. With your mobile phone, scan the QR code displayed in the terminal or browser to open the project on your phone.
+
+
